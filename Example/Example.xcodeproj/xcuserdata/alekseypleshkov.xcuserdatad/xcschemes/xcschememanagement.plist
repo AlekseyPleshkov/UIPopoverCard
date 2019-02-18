@@ -4,20 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>UIPopoverCard.xcscheme_^#shared#^_</key>
+		<key>Example.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>9AB9125B2219D65000D3BF46</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9AB912642219D65000D3BF46</key>
+		<key>9A9D20862219E57D00F014A4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A6CE0A5221A8083000DEF6F /* UIPopoverCardConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6CE0A4221A8083000DEF6F /* UIPopoverCardConfiguration.swift */; };
+		9A9D20A32219E6C700F014A4 /* UIPopoverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9D20A22219E6C700F014A4 /* UIPopoverCard.swift */; };
+		9A9D20A82219EA9B00F014A4 /* UIPopoverCardBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9D20A72219EA9B00F014A4 /* UIPopoverCardBody.swift */; };
 		9AB912662219D65000D3BF46 /* UIPopoverCard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB9125C2219D65000D3BF46 /* UIPopoverCard.framework */; };
 		9AB9126B2219D65000D3BF46 /* UIPopoverCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9126A2219D65000D3BF46 /* UIPopoverCardTests.swift */; };
 		9AB9126D2219D65000D3BF46 /* UIPopoverCard.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AB9125F2219D65000D3BF46 /* UIPopoverCard.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,6 +26,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A6CE0A4221A8083000DEF6F /* UIPopoverCardConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPopoverCardConfiguration.swift; sourceTree = "<group>"; };
+		9A9D20A22219E6C700F014A4 /* UIPopoverCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPopoverCard.swift; sourceTree = "<group>"; };
+		9A9D20A72219EA9B00F014A4 /* UIPopoverCardBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPopoverCardBody.swift; sourceTree = "<group>"; };
 		9AB9125C2219D65000D3BF46 /* UIPopoverCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIPopoverCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AB9125F2219D65000D3BF46 /* UIPopoverCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIPopoverCard.h; sourceTree = "<group>"; };
 		9AB912602219D65000D3BF46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -71,6 +77,9 @@
 		9AB9125E2219D65000D3BF46 /* UIPopoverCard */ = {
 			isa = PBXGroup;
 			children = (
+				9A9D20A22219E6C700F014A4 /* UIPopoverCard.swift */,
+				9A6CE0A4221A8083000DEF6F /* UIPopoverCardConfiguration.swift */,
+				9A9D20A72219EA9B00F014A4 /* UIPopoverCardBody.swift */,
 				9AB9125F2219D65000D3BF46 /* UIPopoverCard.h */,
 				9AB912602219D65000D3BF46 /* Info.plist */,
 			);
@@ -148,6 +157,7 @@
 				TargetAttributes = {
 					9AB9125B2219D65000D3BF46 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					9AB912642219D65000D3BF46 = {
 						CreatedOnToolsVersion = 10.1;
@@ -194,6 +204,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A6CE0A5221A8083000DEF6F /* UIPopoverCardConfiguration.swift in Sources */,
+				9A9D20A82219EA9B00F014A4 /* UIPopoverCardBody.swift in Sources */,
+				9A9D20A32219E6C700F014A4 /* UIPopoverCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +281,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -326,7 +339,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -341,6 +354,7 @@
 		9AB912712219D65000D3BF46 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -358,6 +372,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = aleksey.store.UIPopoverCard;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -366,6 +381,7 @@
 		9AB912722219D65000D3BF46 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -391,6 +407,7 @@
 		9AB912742219D65000D3BF46 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V3T83JM3UW;
 				INFOPLIST_FILE = UIPopoverCardTests/Info.plist;
@@ -409,6 +426,7 @@
 		9AB912752219D65000D3BF46 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V3T83JM3UW;
 				INFOPLIST_FILE = UIPopoverCardTests/Info.plist;
