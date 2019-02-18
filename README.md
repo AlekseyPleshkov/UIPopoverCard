@@ -2,6 +2,8 @@
 
 `UIPopoverCard` creating bottom slide card for show information.
 
+![Screenshot](https://github.com/AlekseyPleshkov/UIPopoverCard/blob/master/example.gif?raw=true)
+
 ## Installation
 
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
