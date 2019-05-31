@@ -82,8 +82,11 @@ let body = UIPopoverCardBody(xibName: "Test")
 ### UIPopoverCardDelegate events
 
 ```swift
-// Change visibility state of popover card
-popoverCard(_ popoverCard: UIPopoverCard, didVisible: Bool)
+/// Will change visibility state of popover card
+func popoverCard(_ popoverCard: UIPopoverCard, willChangeVisible isShow: Bool)
+
+/// Did change visibility state of popover card
+func popoverCard(_ popoverCard: UIPopoverCard, didChangeVisible isShow: Bool)
 ```
 
 ## About Me

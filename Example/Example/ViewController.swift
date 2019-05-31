@@ -26,6 +26,16 @@ class ViewController: UIViewController {
     let body = UIPopoverCardBody(xibName: "Test")
 
     popoverCard = UIPopoverCard(self, configure: config, body: body)
+    popoverCard?.delegate = self
   }
 }
 
+extension ViewController: UIPopoverCardDelegate {
+  func popoverCard(_ popoverCard: UIPopoverCard, willChangeVisible isShow: Bool) {
+    print("Will change \(isShow)")
+  }
+
+  func popoverCard(_ popoverCard: UIPopoverCard, didChangeVisible isShow: Bool) {
+    print("Did change \(isShow)")
+  }
+}

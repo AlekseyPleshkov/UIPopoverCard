@@ -15,14 +15,12 @@ public protocol UIPopoverCardConfigurationProtocol {
   var backgroundBaseAlpha: CGFloat { get set }
   var cardColor: UIColor { get set }
   var isShowBackground: Bool { get set }
-  /// Hide popover if tap/swift on background
+  /// Hide popover if tap/swipe on background
   var isHideCardBackgroundTap: Bool { get set }
   var animationDuration: TimeInterval { get set }
-
 }
 
 public struct UIPopoverCardConfiguration: UIPopoverCardConfigurationProtocol {
-
   public var backgroundColor: UIColor = UIColor.lightGray
   public var backgroundBaseAlpha: CGFloat = 0.5
   public var cardColor: UIColor = UIColor.white

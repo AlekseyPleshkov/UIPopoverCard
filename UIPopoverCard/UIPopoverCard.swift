@@ -9,9 +9,11 @@
 import UIKit
 
 public protocol UIPopoverCardDelegate {
+  /// Will change visibility state of popover card
+  func popoverCard(_ popoverCard: UIPopoverCard, willChangeVisible isShow: Bool)
 
-  /// Change visibility state of popover card
-  func popoverCard(_ popoverCard: UIPopoverCard, didVisible: Bool)
+  /// Did change visibility state of popover card
+  func popoverCard(_ popoverCard: UIPopoverCard, didChangeVisible isShow: Bool)
 }
 
 public final class UIPopoverCard: UIView {
@@ -30,8 +32,8 @@ public final class UIPopoverCard: UIView {
   public let backgroundView: UIView
   public let cardView: UIView
 
-  private var constraintCardHeight: NSLayoutConstraint?
-  private var constraintCardButton: NSLayoutConstraint?
+  public var constraintCardHeight: NSLayoutConstraint?
+  public var constraintCardButton: NSLayoutConstraint?
 
   /// Height of parent controller view
   private var parentViewHeight: CGFloat {
@@ -68,6 +70,10 @@ public final class UIPopoverCard: UIView {
 
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+
+  deinit {
+    NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
   }
 
   // MARK: - Setups
@@ -166,10 +172,11 @@ public final class UIPopoverCard: UIView {
     constraintCardButton.constant = cardButton
 
     UIView.animate(withDuration: configure.animationDuration, animations: {
+      self.delegate?.popoverCard(self, willChangeVisible: self.isShow)
       self.backgroundView.alpha = CGFloat(backgroundViewAlpha)
       self.layoutIfNeeded()
     }) { isEnd in
-      self.delegate?.popoverCard(self, didVisible: self.isShow)
+      self.delegate?.popoverCard(self, didChangeVisible: self.isShow)
     }
   }
 
@@ -189,7 +196,9 @@ public final class UIPopoverCard: UIView {
 
   /// Event for device rotated
   @objc private func deviceRotated() {
-    updateVisibilityState()
+    if isShow {
+      updateVisibilityState()
+    }
   }
 
   @objc private func gestureHideView() {
