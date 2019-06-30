@@ -6,38 +6,50 @@
 //  Copyright © 2019 Aleksey Pleshkov. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 /// Popover card body with content view from UIView or XIB
 public protocol UIPopoverCardBodyProtocol {
+  /// Main body view
   var view: UIView { get }
-  var contentView: UIView? { get }
+
+  /// Content view from view or xib
+  var containerView: UIView? { get }
+
+  /// Init from view
   init(view: UIView)
+
+  /// Init from xib name
   init(xibName: String)
 }
 
 public final class UIPopoverCardBody: UIPopoverCardBodyProtocol {
 
+  // MARK: - Public Properties
+
   public let view: UIView = UIView(frame: CGRect.zero)
-  public private(set) var contentView: UIView?
+  public private(set) var containerView: UIView?
+
+  // MARK: - Init
 
   public init(view: UIView) {
     setupBodyView()
-    setContentView(view: view)
+    addContentView(view: view)
   }
 
   public init(xibName: String) {
     setupBodyView()
-    setContentView(xibName: xibName)
+    addContentView(xibName: xibName)
   }
+
+  // MARK: - Private methods
 
   private func setupBodyView() {
     view.translatesAutoresizingMaskIntoConstraints = false
     view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
   }
 
-  private func setContentView(view contentView: UIView) {
+  private func addContentView(view contentView: UIView) {
     contentView.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(contentView)
 
@@ -49,14 +61,14 @@ public final class UIPopoverCardBody: UIPopoverCardBodyProtocol {
       ]
 
     NSLayoutConstraint.activate(constraints)
-    self.contentView = contentView
+    self.containerView = contentView
   }
 
-  private func setContentView(xibName name: String) {
+  private func addContentView(xibName name: String) {
     guard let xib = UINib(nibName: name, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? UIView else {
-      fatalError("Xib \(name) don't cast to UIView!")
+      fatalError("Xib file \(name) don't cast to UIView!")
     }
 
-    setContentView(view: xib)
+    addContentView(view: xib)
   }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9A6CE0A5221A8083000DEF6F /* UIPopoverCardConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6CE0A4221A8083000DEF6F /* UIPopoverCardConfiguration.swift */; };
+		9A77D62522C5FF5800AC8849 /* UIPopoverCardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A77D62422C5FF5800AC8849 /* UIPopoverCardState.swift */; };
 		9A9D20A32219E6C700F014A4 /* UIPopoverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9D20A22219E6C700F014A4 /* UIPopoverCard.swift */; };
 		9A9D20A82219EA9B00F014A4 /* UIPopoverCardBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9D20A72219EA9B00F014A4 /* UIPopoverCardBody.swift */; };
 		9AB912662219D65000D3BF46 /* UIPopoverCard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB9125C2219D65000D3BF46 /* UIPopoverCard.framework */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		9A6CE0A4221A8083000DEF6F /* UIPopoverCardConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPopoverCardConfiguration.swift; sourceTree = "<group>"; };
+		9A77D62422C5FF5800AC8849 /* UIPopoverCardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPopoverCardState.swift; sourceTree = "<group>"; };
 		9A9D20A22219E6C700F014A4 /* UIPopoverCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPopoverCard.swift; sourceTree = "<group>"; };
 		9A9D20A72219EA9B00F014A4 /* UIPopoverCardBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPopoverCardBody.swift; sourceTree = "<group>"; };
 		9AB9125C2219D65000D3BF46 /* UIPopoverCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIPopoverCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,11 +79,12 @@
 		9AB9125E2219D65000D3BF46 /* UIPopoverCard */ = {
 			isa = PBXGroup;
 			children = (
-				9A9D20A22219E6C700F014A4 /* UIPopoverCard.swift */,
-				9A6CE0A4221A8083000DEF6F /* UIPopoverCardConfiguration.swift */,
-				9A9D20A72219EA9B00F014A4 /* UIPopoverCardBody.swift */,
-				9AB9125F2219D65000D3BF46 /* UIPopoverCard.h */,
 				9AB912602219D65000D3BF46 /* Info.plist */,
+				9AB9125F2219D65000D3BF46 /* UIPopoverCard.h */,
+				9A9D20A22219E6C700F014A4 /* UIPopoverCard.swift */,
+				9A9D20A72219EA9B00F014A4 /* UIPopoverCardBody.swift */,
+				9A6CE0A4221A8083000DEF6F /* UIPopoverCardConfiguration.swift */,
+				9A77D62422C5FF5800AC8849 /* UIPopoverCardState.swift */,
 			);
 			path = UIPopoverCard;
 			sourceTree = "<group>";
@@ -157,7 +160,7 @@
 				TargetAttributes = {
 					9AB9125B2219D65000D3BF46 = {
 						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 					};
 					9AB912642219D65000D3BF46 = {
 						CreatedOnToolsVersion = 10.1;
@@ -207,6 +210,7 @@
 				9A6CE0A5221A8083000DEF6F /* UIPopoverCardConfiguration.swift in Sources */,
 				9A9D20A82219EA9B00F014A4 /* UIPopoverCardBody.swift in Sources */,
 				9A9D20A32219E6C700F014A4 /* UIPopoverCard.swift in Sources */,
+				9A77D62522C5FF5800AC8849 /* UIPopoverCardState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,7 +377,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -399,7 +403,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = aleksey.store.UIPopoverCard;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

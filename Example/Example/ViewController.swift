@@ -16,7 +16,7 @@ class ViewController: UIViewController {
   @IBAction func buttonPopover(_ sender: Any) {
     guard let popoverCard = popoverCard else { return }
 
-    popoverCard.toggle()
+    popoverCard.show()
   }
   
   override func viewDidLoad() {
@@ -31,11 +31,15 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UIPopoverCardDelegate {
-  func popoverCard(_ popoverCard: UIPopoverCard, willChangeVisible isShow: Bool) {
-    print("Will change \(isShow)")
+  func popoverCard(_ popoverCard: UIPopoverCard, willChangeShow isVisible: Bool) {
+    print("Will change visible \(isVisible)")
   }
 
-  func popoverCard(_ popoverCard: UIPopoverCard, didChangeVisible isShow: Bool) {
-    print("Did change \(isShow)")
+  func popoverCard(_ popoverCard: UIPopoverCard, didChangeShow isVisible: Bool) {
+    print("Did change visible \(isVisible)")
+  }
+
+  func popoverCard(_ popoverCard: UIPopoverCard, didChangeSize state: UIPopoverCardState) {
+    print("Did change state \(state)")
   }
 }

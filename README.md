@@ -20,7 +20,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-pod 'UIPopoverCard', '~> 0.0.2'
+pod 'UIPopoverCard', '~> 0.1.0'
 end
 ```
 
@@ -49,7 +49,6 @@ override func viewDidLoad() {
     
     popoverCard.show()
     // popoverCard.hide()
-    // popoverCard.toggle()
     
     // ...
 }
@@ -60,13 +59,15 @@ override func viewDidLoad() {
 ``` swift
 let config = UIPopoverCardConfiguration()
 
-config.backgroundColor = UIColor.lightGray
-config.backgroundBaseAlpha = 0.5
-config.cardColor = UIColor.white
+config.overlayColor = UIColor.lightGray
+config.overlayAlpha = 0.5
+config.cardBackgroundColor = UIColor.white
+config.headerCardLineColor = UIColor.lightGray
 config.isShowBackground = true
-config.isHideCardBackgroundTap = true
-config.animationDuration = 0.3
-}
+config.isHideCardTapToBackground = true
+config.visibleAnimationDuration = 0.5
+config.changeStateAnimationDuration = 0.3
+config.availableStates= [.small, .middle, .large]
 ```
 
 ### UIPopoverCardBody initialization types
@@ -76,17 +77,20 @@ config.animationDuration = 0.3
 let body = UIPopoverCardBody(view: YOU_UIVIEW)
 
 // Create body from xib name
-let body = UIPopoverCardBody(xibName: "Test")
+let body = UIPopoverCardBody(xibName: "YOU_XIB_NAME")
 ```
 
 ### UIPopoverCardDelegate events
 
 ```swift
 /// Will change visibility state of popover card
-func popoverCard(_ popoverCard: UIPopoverCard, willChangeVisible isShow: Bool)
+func popoverCard(_ popoverCard: UIPopoverCard, willChangeShow isVisible: Bool)
 
 /// Did change visibility state of popover card
-func popoverCard(_ popoverCard: UIPopoverCard, didChangeVisible isShow: Bool)
+func popoverCard(_ popoverCard: UIPopoverCard, didChangeShow isVisible: Bool)
+
+/// Did change state of size card
+func popoverCard(_ popoverCard: UIPopoverCard, didChangeSize state: UIPopoverCardState)
 ```
 
 ## About Me

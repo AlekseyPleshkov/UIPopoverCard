@@ -6,27 +6,33 @@
 //  Copyright © 2019 Aleksey Pleshkov. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 /// Configuration popover views
 public protocol UIPopoverCardConfigurationProtocol {
-  var backgroundColor: UIColor { get set }
-  var backgroundBaseAlpha: CGFloat { get set }
-  var cardColor: UIColor { get set }
-  var isShowBackground: Bool { get set }
-  /// Hide popover if tap/swipe on background
-  var isHideCardBackgroundTap: Bool { get set }
-  var animationDuration: TimeInterval { get set }
+  var overlayColor: UIColor { get }
+  var overlayAlpha: CGFloat { get }
+  var cardBackgroundColor: UIColor { get }
+  var headerCardLineColor: UIColor { get }
+  var isShowBackground: Bool { get }
+  /// Hide popover if tap on background
+  var isHideCardTapToBackground: Bool { get }
+  var visibleAnimationDuration: TimeInterval { get }
+  var changeStateAnimationDuration: TimeInterval { get }
+  /// Available states of card sizes
+  var availableStates: [UIPopoverCardState] { get }
 }
 
 public struct UIPopoverCardConfiguration: UIPopoverCardConfigurationProtocol {
-  public var backgroundColor: UIColor = UIColor.lightGray
-  public var backgroundBaseAlpha: CGFloat = 0.5
-  public var cardColor: UIColor = UIColor.white
+  public var overlayColor: UIColor = UIColor.lightGray
+  public var overlayAlpha: CGFloat = 0.5
+  public var cardBackgroundColor: UIColor = UIColor.white
+  public var headerCardLineColor: UIColor = UIColor.lightGray
   public var isShowBackground: Bool = true
-  public var isHideCardBackgroundTap: Bool = true
-  public var animationDuration: TimeInterval = 0.3
+  public var isHideCardTapToBackground: Bool = true
+  public var visibleAnimationDuration: TimeInterval = 0.5
+  public var changeStateAnimationDuration: TimeInterval = 0.3
+  public var availableStates: [UIPopoverCardState] = [.small, .middle, .large]
 
   public init() {
     //
