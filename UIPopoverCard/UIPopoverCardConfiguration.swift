@@ -21,6 +21,8 @@ public protocol UIPopoverCardConfigurationProtocol {
   var changeStateAnimationDuration: TimeInterval { get }
   /// Available states of card sizes
   var availableStates: [UIPopoverCardState] { get }
+  /// Adaptive by content. Ignoring availableStates
+  var isAdaptiveByContent: Bool { get }
 }
 
 public struct UIPopoverCardConfiguration: UIPopoverCardConfigurationProtocol {
@@ -33,6 +35,7 @@ public struct UIPopoverCardConfiguration: UIPopoverCardConfigurationProtocol {
   public var visibleAnimationDuration: TimeInterval = 0.5
   public var changeStateAnimationDuration: TimeInterval = 0.3
   public var availableStates: [UIPopoverCardState] = [.small, .middle, .large]
+  public var isAdaptiveByContent: Bool = false
 
   public init() {
     //

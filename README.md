@@ -20,7 +20,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-pod 'UIPopoverCard', '~> 0.1.0'
+pod 'UIPopoverCard', '~> 0.1.1'
 end
 ```
 
@@ -68,6 +68,7 @@ config.isHideCardTapToBackground = true
 config.visibleAnimationDuration = 0.5
 config.changeStateAnimationDuration = 0.3
 config.availableStates= [.small, .middle, .large]
+config.isAdaptiveByContent = false
 ```
 
 ### UIPopoverCardBody initialization types
