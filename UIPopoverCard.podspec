@@ -1,7 +1,7 @@
 # coding: utf-8
 Pod::Spec.new do |s|
     s.name         = "UIPopoverCard"
-    s.version      = "0.1.1"
+    s.version      = "1.1.1"
     s.summary      = "UIPopoverCard creating button popover card with content"
     s.author       = "AlekseyPleshkov <im@alekseypleshkov.ru>"
     s.homepage     = "https://github.com/AlekseyPleshkov/UIPopoverCard"
