@@ -1,8 +1,8 @@
 # coding: utf-8
 Pod::Spec.new do |s|
     s.name         = "UIPopoverCard"
-    s.version      = "1.1.1"
-    s.summary      = "UIPopoverCard creating button popover card with content"
+    s.version      = "1.1.2"
+    s.summary      = "UIPopoverCard is a slide-up card by states or adaptive by content"
     s.author       = "AlekseyPleshkov <im@alekseypleshkov.ru>"
     s.homepage     = "https://github.com/AlekseyPleshkov/UIPopoverCard"
     s.license      = 'MIT'

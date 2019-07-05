@@ -60,6 +60,9 @@ public final class UIPopoverCard: UIView {
   /// Struct for setup container body view
   private let body: UIPopoverCardBodyProtocol
 
+  /// Constraint for card body bottom
+  private var constraintBodyBottom: NSLayoutConstraint?
+
   /// Height of parent controller view
   private var parentViewHeight: CGFloat {
     guard let parent = parentController else {
@@ -72,7 +75,7 @@ public final class UIPopoverCard: UIView {
   /// Get height for card by state or adaptive
   private var cardViewHeight: CGFloat {
     if configure.isAdaptiveByContent {
-      return maxCardHeight
+      return maxCardHeight > 0 ? maxCardHeight : parentViewHeight
     }
 
     return parentViewHeight * cardState.rawValue
@@ -118,14 +121,9 @@ public final class UIPopoverCard: UIView {
 
   // MARK: - Lifecycle
 
-  public override func layoutSubviews() {
-    super.layoutSubviews()
-
-    if configure.isAdaptiveByContent {
-      setupSizesByAdaptive()
-    } else {
-      setupSizesByState()
-    }
+  public override func layoutIfNeeded() {
+    super.layoutIfNeeded()
+    setupSizes()
   }
 
   // MARK: - Setups
@@ -135,6 +133,7 @@ public final class UIPopoverCard: UIView {
     setupViews()
     setupConstraints()
     setupActions()
+    layoutIfNeeded()
   }
 
   private func setupViews() {
@@ -163,20 +162,18 @@ public final class UIPopoverCard: UIView {
 
     headerCardView.translatesAutoresizingMaskIntoConstraints = false
     headerCardView.backgroundColor = UIColor.clear
-    headerCardView.isHidden = configure.isAdaptiveByContent
 
     headerLineView.translatesAutoresizingMaskIntoConstraints = false
     headerLineView.backgroundColor = configure.headerCardLineColor
     headerLineView.layer.masksToBounds = true
     headerLineView.layer.cornerRadius = 4.0
 
-    addSubview(overlayView)
-    addSubview(cardView)
-
+    headerCardView.addSubview(headerLineView)
     cardView.addSubview(body.view)
     cardView.addSubview(headerCardView)
 
-    headerCardView.addSubview(headerLineView)
+    addSubview(overlayView)
+    addSubview(cardView)
 
     parentController.view.addSubview(self)
   }
@@ -186,10 +183,10 @@ public final class UIPopoverCard: UIView {
       return
     }
 
-    let constraintCardHeight = cardView.heightAnchor.constraint(equalToConstant: parentViewHeight)
-    let constraintCardBottom = cardView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: parentViewHeight)
-    let bodyTopAnchorConstant: CGFloat = configure.isAdaptiveByContent ? 0 : 20
-
+    let constraintCardHeight = cardView.heightAnchor.constraint(equalToConstant: cardViewHeight)
+    let constraintCardBottom = cardView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: cardViewHeight)
+    let constraintBodyBottom = body.view.bottomAnchor.constraint(equalTo: cardView.bottomAnchor)
+    
     let mainConstraints: [NSLayoutConstraint] = [
       topAnchor.constraint(equalTo: parentController.view.topAnchor),
       leadingAnchor.constraint(equalTo: parentController.view.leadingAnchor),
@@ -206,36 +203,32 @@ public final class UIPopoverCard: UIView {
       cardView.trailingAnchor.constraint(equalTo: trailingAnchor),
       constraintCardBottom,
       //
-      body.view.topAnchor.constraint(equalTo: cardView.topAnchor, constant: bodyTopAnchorConstant),
+      headerCardView.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 0),
+      headerCardView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
+      headerCardView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
+      headerCardView.bottomAnchor.constraint(equalTo: body.view.topAnchor, constant: 0),
+      headerCardView.heightAnchor.constraint(equalToConstant: configure.headerCardHeight),
+      //
+      headerLineView.widthAnchor.constraint(equalToConstant: 60),
+      headerLineView.heightAnchor.constraint(equalToConstant: 6),
+      headerLineView.centerXAnchor.constraint(equalTo: headerCardView.centerXAnchor, constant: 0),
+      headerLineView.centerYAnchor.constraint(equalTo: headerCardView.centerYAnchor, constant: 0),
+      //
+      body.view.topAnchor.constraint(equalTo: headerCardView.bottomAnchor, constant: 0),
       body.view.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
       body.view.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
-      body.view.bottomAnchor.constraint(equalTo: cardView.bottomAnchor)
+      constraintBodyBottom
     ]
 
-    /// Setting constraints for header line if not active adaptive mode
-    if !configure.isAdaptiveByContent {
-      let cardHeaderConstraints: [NSLayoutConstraint] = [
-        headerCardView.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 0),
-        headerCardView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
-        headerCardView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
-        headerCardView.bottomAnchor.constraint(equalTo: body.view.topAnchor, constant: 0),
-        //
-        headerLineView.widthAnchor.constraint(equalToConstant: 60),
-        headerLineView.heightAnchor.constraint(equalToConstant: 6),
-        headerLineView.topAnchor.constraint(equalTo: headerCardView.topAnchor, constant: 7),
-        headerLineView.centerXAnchor.constraint(equalTo: headerCardView.centerXAnchor, constant: 0)
-      ]
-
-      NSLayoutConstraint.activate(cardHeaderConstraints)
-    }
-
-    /// Change height priority for adaptive mode
+    // Change constraint priority for adaptive mode
     if configure.isAdaptiveByContent {
+      constraintBodyBottom.priority = .defaultHigh
       constraintCardHeight.priority = .defaultLow
     }
 
     self.constraintCardHeight = constraintCardHeight
     self.constraintCardBottom = constraintCardBottom
+    self.constraintBodyBottom = constraintBodyBottom
 
     NSLayoutConstraint.activate(mainConstraints)
   }
@@ -246,24 +239,12 @@ public final class UIPopoverCard: UIView {
       self, selector: #selector(actionDeviceRotated),
       name: UIDevice.orientationDidChangeNotification, object: nil)
 
-    /// Hide card by swipe down at content
-    if configure.isAdaptiveByContent {
-      let swipeDownCardHide = UISwipeGestureRecognizer(
-        target: self,
-        action: #selector(actionSingleTapForHideCard))
-
-      swipeDownCardHide.direction = .down
-      cardView.addGestureRecognizer(swipeDownCardHide)
-    }
-
     /// Resize card height by swipe on card header
-    if !configure.isAdaptiveByContent {
-      let panChangeCardHeight = UIPanGestureRecognizer(
-        target: self,
-        action: #selector(actionTapForChangeStateCard(action:)))
+    let panChangeCardHeight = UIPanGestureRecognizer(
+      target: self,
+      action: #selector(actionTapForChangeStateCard(action:)))
 
-      headerCardView.addGestureRecognizer(panChangeCardHeight)
-    }
+    cardView.addGestureRecognizer(panChangeCardHeight)
 
     // Close card if tap to background
     if configure.isHideCardTapToBackground {
@@ -271,6 +252,14 @@ public final class UIPopoverCard: UIView {
 
       tapBackgroundView.numberOfTapsRequired = 1
       overlayView.addGestureRecognizer(tapBackgroundView)
+    }
+  }
+
+  private func setupSizes() {
+    if configure.isAdaptiveByContent {
+      setupSizesByAdaptive()
+    } else {
+      setupSizesByState()
     }
   }
 
@@ -288,10 +277,10 @@ public final class UIPopoverCard: UIView {
     guard let bodyContainer = body.containerView else {
       return
     }
-    let bodyContainerHeight = bodyContainer.bounds.height
+    let bodyContainerHeight = bodyContainer.frame.height
 
     minCardHeight = bodyContainerHeight / 2
-    maxCardHeight = bodyContainerHeight
+    maxCardHeight = bodyContainerHeight + configure.headerCardHeight
   }
 
   // MARK: - Public Methods
@@ -300,6 +289,7 @@ public final class UIPopoverCard: UIView {
     guard !isCardVisible else { return }
 
     isCardVisible = true
+    layoutIfNeeded()
     updateCardVisibilityConstraint()
   }
 
@@ -325,7 +315,7 @@ public final class UIPopoverCard: UIView {
       else { return }
 
     let overlayAlpha = isCardVisible ? configure.overlayAlpha : 0
-    let constantCardButton = isCardVisible ? 0 : parentViewHeight
+    let constantCardButton = isCardVisible ? 0 : cardViewHeight
 
     let animateStart = { [unowned self] in
       self.notifyDelegate(type: .willChangeVisible)
@@ -369,7 +359,7 @@ public final class UIPopoverCard: UIView {
     UIView.animate(
       withDuration: configure.changeStateAnimationDuration,
       delay: 0,
-      usingSpringWithDamping: 0.6,
+      usingSpringWithDamping: 0.7,
       initialSpringVelocity: 1,
       options: [],
       animations: animateStart,
@@ -377,22 +367,31 @@ public final class UIPopoverCard: UIView {
   }
 
   /// Update height constraint for card if resize
-  private func updateCardHeight(height: CGFloat) {
+  private func updateCardHeight(action: UIPanGestureRecognizer) {
     guard let constraintCardHeight = constraintCardHeight else {
       return
     }
 
-    guard height <= maxCardHeight else {
-      constraintCardHeight.constant = maxCardHeight
-      return
-    }
+    let velocity = action.velocity(in: cardView).y
+    let translation = action.translation(in: cardView).y
+    let velocityFactor = velocity * 0.014
 
-    guard height >= minCardHeight else {
+    let updatedHeight: CGFloat = {
+      let height = cardView.frame.height - velocityFactor
+
+      guard height <= maxCardHeight else {
+        return maxCardHeight + translation / -5
+      }
+
+      return height
+    }()
+
+    guard updatedHeight >= minCardHeight else {
       hide()
       return
     }
 
-    constraintCardHeight.constant = height
+    constraintCardHeight.constant = updatedHeight
   }
 
   /// Update card state by card height
@@ -456,15 +455,27 @@ private extension UIPopoverCard {
   }
 
   /// Action for change state by swipe
-  @objc private func actionTapForChangeStateCard(action: UIGestureRecognizer) {
-    let tapLocation = action.location(in: self)
-    let updatedCardHeight = self.frame.height - tapLocation.y
+  @objc private func actionTapForChangeStateCard(action: UIPanGestureRecognizer) {
+    guard
+      isCardVisible,
+      let constraintCardHeight = constraintCardHeight,
+      let constraintBodyBottom = constraintBodyBottom
+      else { return }
 
     switch action.state {
+    case .began:
+      if configure.isAdaptiveByContent {
+        constraintCardHeight.priority = .defaultHigh
+        constraintBodyBottom.priority = .defaultLow
+      }
     case .changed:
-      updateCardHeight(height: updatedCardHeight)
+      updateCardHeight(action: action)
       updateStateByCardHeight()
     case .ended:
+      if configure.isAdaptiveByContent {
+        constraintCardHeight.priority = .defaultLow
+        constraintBodyBottom.priority = .defaultHigh
+      }
       updateCardHeight(state: cardState)
     default:
       break

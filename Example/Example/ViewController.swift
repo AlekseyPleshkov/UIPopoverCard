@@ -22,7 +22,8 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    let config = UIPopoverCardConfiguration()
+    var config = UIPopoverCardConfiguration()
+    //config.isAdaptiveByContent = true
     let body = UIPopoverCardBody(xibName: "Test")
 
     popoverCard = UIPopoverCard(self, configure: config, body: body)

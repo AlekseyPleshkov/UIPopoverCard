@@ -57,11 +57,11 @@ public final class UIPopoverCardBody: UIPopoverCardBodyProtocol {
       contentView.topAnchor.constraint(equalTo: view.topAnchor),
       contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-      ]
+      contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+    ]
 
     NSLayoutConstraint.activate(constraints)
-    self.containerView = contentView
+    containerView = contentView
   }
 
   private func addContentView(xibName name: String) {

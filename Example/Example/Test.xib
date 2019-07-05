@@ -24,22 +24,37 @@
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eHe-kT-35V">
-                    <rect key="frame" x="0.0" y="74" width="375" height="200"/>
+                    <rect key="frame" x="0.0" y="74" width="375" height="350"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="200" id="tby-Hb-Nnj"/>
+                        <constraint firstAttribute="height" constant="350" id="tby-Hb-Nnj"/>
                     </constraints>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oA6-hm-8JA">
+                    <rect key="frame" x="0.0" y="444" width="375" height="36"/>
+                    <color key="backgroundColor" red="0.0" green="0.58431372550000005" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="P3E-Kb-0Nc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="oA6-hm-8JA" firstAttribute="top" secondItem="eHe-kT-35V" secondAttribute="bottom" constant="20" id="0UH-Ms-gTM"/>
                 <constraint firstItem="eHe-kT-35V" firstAttribute="top" secondItem="pwM-lM-kZq" secondAttribute="bottom" id="7fF-mA-tgL"/>
-                <constraint firstItem="eHe-kT-35V" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" priority="800" id="E00-nB-qfD"/>
                 <constraint firstItem="eHe-kT-35V" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="TrA-ji-EvB"/>
                 <constraint firstItem="eHe-kT-35V" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Xc4-x4-6pg"/>
+                <constraint firstItem="oA6-hm-8JA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="XiV-K8-0jS"/>
                 <constraint firstItem="pwM-lM-kZq" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="dA9-AK-00y"/>
                 <constraint firstItem="pwM-lM-kZq" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="eRZ-HA-bN2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="oA6-hm-8JA" secondAttribute="trailing" id="f10-bh-ZFg"/>
                 <constraint firstItem="pwM-lM-kZq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ice-ob-uyU"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="oA6-hm-8JA" secondAttribute="bottom" priority="600" id="rd7-DU-1mo"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="45.600000000000001" y="-24.7376311844078"/>

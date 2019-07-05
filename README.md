@@ -1,6 +1,6 @@
 # UIPopoverCard
 
-`UIPopoverCard` creating bottom slide card for show information.
+`UIPopoverCard` is a slide-up card by states or adaptive by content
 
 ![Screenshot](https://github.com/AlekseyPleshkov/UIPopoverCard/blob/master/example.gif?raw=true)
 
@@ -20,7 +20,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-pod 'UIPopoverCard', '~> 1.1.1'
+pod 'UIPopoverCard', '~> 1.1.2'
 end
 ```
 
@@ -62,12 +62,13 @@ let config = UIPopoverCardConfiguration()
 config.overlayColor = UIColor.lightGray
 config.overlayAlpha = 0.5
 config.cardBackgroundColor = UIColor.white
+config.headerCardHeight = 20
 config.headerCardLineColor = UIColor.lightGray
 config.isShowBackground = true
 config.isHideCardTapToBackground = true
-config.visibleAnimationDuration = 0.5
-config.changeStateAnimationDuration = 0.3
-config.availableStates= [.small, .middle, .large]
+config.visibleAnimationDuration = 0.35
+config.changeStateAnimationDuration = 0.5
+config.availableStates = [.small, .middle, .large]
 config.isAdaptiveByContent = false
 ```
 
