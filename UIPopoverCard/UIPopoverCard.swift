@@ -58,7 +58,7 @@ public final class UIPopoverCard: UIView {
   private let configure: UIPopoverCardConfigurationProtocol
 
   /// Struct for setup container body view
-  private let body: UIPopoverCardBodyProtocol
+  private var body: UIPopoverCardBodyProtocol
 
   /// Constraint for card body bottom
   private var constraintBodyBottom: NSLayoutConstraint?
@@ -183,6 +183,15 @@ public final class UIPopoverCard: UIView {
       return
     }
 
+    if let constraintCardBottom = constraintCardBottom {
+      parentController.view.removeConstraints([constraintCardBottom])
+    }
+
+    overlayView.removeConstraints(overlayView.constraints)
+    cardView.removeConstraints(cardView.constraints)
+    headerCardView.removeConstraints(headerCardView.constraints)
+    headerLineView.removeConstraints(headerLineView.constraints)
+
     let headerCardViewHeight = configure.isShowHeader ? configure.headerCardHeight : 0
     let constraintCardHeight = cardView.heightAnchor.constraint(equalToConstant: cardViewHeight)
     let constraintCardBottom = cardView.bottomAnchor.constraint(equalTo: parentController.view.bottomAnchor, constant: cardViewHeight)
@@ -301,6 +310,20 @@ public final class UIPopoverCard: UIView {
     if let initialState = configure.availableStates.first, cardState != initialState {
       cardState = initialState
     }
+  }
+
+  /// Update body by new body
+  ///
+  /// - Parameter updatedBody: New body
+  public func updateBody(updatedBody: UIPopoverCardBodyProtocol) {
+    body.view.removeFromSuperview()
+    body = updatedBody
+    cardView.addSubview(body.view)
+
+    setupConstraints()
+    cardView.layoutIfNeeded()
+    layoutIfNeeded()
+    updateCardVisibilityConstraint()
   }
 
   // MARK: - Private methods

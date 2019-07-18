@@ -9,7 +9,7 @@
 import UIKit
 
 /// Popover card body with content view from UIView or XIB
-public protocol UIPopoverCardBodyProtocol {
+public protocol UIPopoverCardBodyProtocol: class {
   /// Main body view
   var view: UIView { get }
 
