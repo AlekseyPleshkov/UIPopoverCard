@@ -25,6 +25,10 @@ public protocol UIPopoverCardConfigurationProtocol {
   var availableStates: [UIPopoverCardState] { get }
   /// Adaptive by content. Ignoring availableStates
   var isAdaptiveByContent: Bool { get }
+  /// Hide or show header on card
+  var isShowHeader: Bool { get }
+  /// Change height card by swipe
+  var isChangeSizeBySwipe: Bool { get }
 }
 
 public struct UIPopoverCardConfiguration: UIPopoverCardConfigurationProtocol {
@@ -39,6 +43,8 @@ public struct UIPopoverCardConfiguration: UIPopoverCardConfigurationProtocol {
   public var changeStateAnimationDuration: TimeInterval = 0.5
   public var availableStates: [UIPopoverCardState] = [.small, .middle, .large]
   public var isAdaptiveByContent: Bool = false
+  public var isShowHeader: Bool = true
+  public var isChangeSizeBySwipe: Bool = true
 
   public init() {
     //

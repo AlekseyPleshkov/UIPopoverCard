@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A0FA1EF22E08B6B00C659E7 /* Test2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0FA1EE22E08B6B00C659E7 /* Test2.xib */; };
 		9A6CE0A7221A9AF2000DEF6F /* UIPopoverCard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6CE0A6221A9AF2000DEF6F /* UIPopoverCard.framework */; };
 		9A6CE0A8221A9AF2000DEF6F /* UIPopoverCard.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6CE0A6221A9AF2000DEF6F /* UIPopoverCard.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9A6CE0AB221AB9C7000DEF6F /* Test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6CE0AA221AB9C7000DEF6F /* Test.xib */; };
@@ -32,6 +33,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9A0FA1EE22E08B6B00C659E7 /* Test2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test2.xib; sourceTree = "<group>"; };
 		9A6CE0A6221A9AF2000DEF6F /* UIPopoverCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UIPopoverCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6CE0AA221AB9C7000DEF6F /* Test.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test.xib; sourceTree = "<group>"; };
 		9A9D20872219E57D00F014A4 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +82,7 @@
 				9A9D208C2219E57D00F014A4 /* ViewController.swift */,
 				9A9D208E2219E57D00F014A4 /* Main.storyboard */,
 				9A6CE0AA221AB9C7000DEF6F /* Test.xib */,
+				9A0FA1EE22E08B6B00C659E7 /* Test2.xib */,
 				9A9D20932219E57E00F014A4 /* LaunchScreen.storyboard */,
 				9A9D20962219E57E00F014A4 /* Info.plist */,
 			);
@@ -150,6 +153,7 @@
 				9A6CE0AB221AB9C7000DEF6F /* Test.xib in Resources */,
 				9A9D20922219E57E00F014A4 /* Assets.xcassets in Resources */,
 				9A9D20902219E57D00F014A4 /* Main.storyboard in Resources */,
+				9A0FA1EF22E08B6B00C659E7 /* Test2.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

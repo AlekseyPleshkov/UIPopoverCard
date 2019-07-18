@@ -20,7 +20,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-pod 'UIPopoverCard', '~> 1.1.2'
+pod 'UIPopoverCard', '~> 1.2.0'
 end
 ```
 
@@ -70,6 +70,8 @@ config.visibleAnimationDuration = 0.35
 config.changeStateAnimationDuration = 0.5
 config.availableStates = [.small, .middle, .large]
 config.isAdaptiveByContent = false
+config.isShowHeader = false
+config.isChangeSizeBySwipe = true
 ```
 
 ### UIPopoverCardBody initialization types

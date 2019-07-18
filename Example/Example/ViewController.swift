@@ -23,7 +23,11 @@ class ViewController: UIViewController {
     super.viewDidLoad()
 
     var config = UIPopoverCardConfiguration()
-    //config.isAdaptiveByContent = true
+//    config.isAdaptiveByContent = true
+//    config.isShowBackground = false
+//    config.isShowHeader = false
+//    config.isChangeSizeBySwipe = false
+
     let body = UIPopoverCardBody(xibName: "Test")
 
     popoverCard = UIPopoverCard(self, configure: config, body: body)
