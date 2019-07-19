@@ -119,13 +119,6 @@ public final class UIPopoverCard: UIView {
     NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
   }
 
-  // MARK: - Lifecycle
-
-  public override func layoutIfNeeded() {
-    super.layoutIfNeeded()
-    setupSizes()
-  }
-
   // MARK: - Setups
 
   /// Default setup views, constraints and notifications
@@ -133,9 +126,9 @@ public final class UIPopoverCard: UIView {
     setupViews()
     setupConstraints()
     setupActions()
-    layoutIfNeeded()
   }
 
+  /// Setup views style and add to parents
   private func setupViews() {
     guard let parentController = parentController else {
       return
@@ -178,6 +171,7 @@ public final class UIPopoverCard: UIView {
     parentController.view.addSubview(self)
   }
 
+  /// Setup constraints for views
   private func setupConstraints() {
     guard let parentController = parentController else {
       return
@@ -239,6 +233,7 @@ public final class UIPopoverCard: UIView {
     NSLayoutConstraint.activate(mainConstraints)
   }
 
+  /// Setup tap, pan and swipe getstures
   private func setupActions() {
     // Send notification if device rotated
     NotificationCenter.default.addObserver(
@@ -296,7 +291,6 @@ public final class UIPopoverCard: UIView {
     guard !isCardVisible else { return }
 
     isCardVisible = true
-    layoutIfNeeded()
     updateCardVisibilityConstraint()
   }
 
@@ -322,7 +316,6 @@ public final class UIPopoverCard: UIView {
 
     setupConstraints()
     cardView.layoutIfNeeded()
-    layoutIfNeeded()
     updateCardVisibilityConstraint()
   }
 
@@ -335,6 +328,8 @@ public final class UIPopoverCard: UIView {
       let constraintCardBottom = constraintCardBottom,
       let constraintCardHeight = constraintCardHeight
       else { return }
+
+    setupSizes()
 
     let overlayAlpha = isCardVisible ? configure.overlayAlpha : 0
     let constantCardButton = isCardVisible ? 0 : cardViewHeight

@@ -23,12 +23,22 @@
                         <constraint firstAttribute="height" constant="300" id="1Jl-iV-GZN"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lCB-Ai-HQr">
+                    <rect key="frame" x="0.0" y="344" width="414" height="20"/>
+                    <color key="backgroundColor" red="1" green="0.04677283753" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="4u1-o2-F5h"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="3T8-se-Sjq" secondAttribute="bottom" priority="600" id="0ak-nz-tPL"/>
+                <constraint firstItem="lCB-Ai-HQr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="JMH-fl-b6J"/>
+                <constraint firstItem="lCB-Ai-HQr" firstAttribute="top" secondItem="3T8-se-Sjq" secondAttribute="bottom" id="Z0B-Iz-9YL"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="lCB-Ai-HQr" secondAttribute="bottom" priority="250" id="Zdz-6V-1PX"/>
                 <constraint firstItem="3T8-se-Sjq" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="hLi-bI-F1l"/>
                 <constraint firstItem="3T8-se-Sjq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="hky-6c-2uJ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lCB-Ai-HQr" secondAttribute="trailing" id="nLU-ru-o4c"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3T8-se-Sjq" secondAttribute="trailing" id="wY7-M3-J2G"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
