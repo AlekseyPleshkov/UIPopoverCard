@@ -20,7 +20,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-pod 'UIPopoverCard', '~> 1.2.2'
+pod 'UIPopoverCard', '~> 1.2.3'
 end
 ```
 

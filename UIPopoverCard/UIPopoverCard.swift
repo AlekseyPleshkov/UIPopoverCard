@@ -329,6 +329,8 @@ public final class UIPopoverCard: UIView {
       let constraintCardHeight = constraintCardHeight
       else { return }
 
+    parentView.layoutIfNeeded()
+
     setupSizes()
 
     let overlayAlpha = isCardVisible ? configure.overlayAlpha : 0
