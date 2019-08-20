@@ -117,6 +117,13 @@ public final class UIPopoverCard: UIView {
 
   deinit {
     NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
+
+    // Remove container controller from parent controller
+    // If body use for show view controller
+    if let containerViewController = body.containerController {
+      containerViewController.willMove(toParent: nil)
+      containerViewController.removeFromParent()
+    }
   }
 
   // MARK: - Setups
@@ -169,6 +176,13 @@ public final class UIPopoverCard: UIView {
     parentController.view.addSubview(overlayView)
     parentController.view.addSubview(cardView)
     parentController.view.addSubview(self)
+
+    // Add container controller in to parent controller
+    // If body use for show view controller
+    if let containerViewController = body.containerController {
+      parentController.addChild(containerViewController)
+      containerViewController.didMove(toParent: parentController)
+    }
   }
 
   /// Setup constraints for views

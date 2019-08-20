@@ -50,5 +50,49 @@
             </objects>
             <point key="canvasLocation" x="-1036" y="31"/>
         </scene>
+        <!--Test View Controller-->
+        <scene sceneID="YW3-0K-qRm">
+            <objects>
+                <viewController storyboardIdentifier="TestViewController" id="dnk-Dx-dQD" customClass="TestViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jC1-Lz-bae">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gqy-Ds-r3A">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ry-4w-af0">
+                                        <rect key="frame" x="110" y="185" width="155" height="30"/>
+                                        <state key="normal" title="Button View Controller">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buttonTest:" destination="dnk-Dx-dQD" eventType="touchUpInside" id="Kse-GH-sqm"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="600" constant="400" id="UIq-qt-rok"/>
+                                    <constraint firstItem="7Ry-4w-af0" firstAttribute="centerX" secondItem="Gqy-Ds-r3A" secondAttribute="centerX" id="qf3-0f-Q0b"/>
+                                    <constraint firstItem="7Ry-4w-af0" firstAttribute="centerY" secondItem="Gqy-Ds-r3A" secondAttribute="centerY" id="tgZ-W8-kj5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Gqy-Ds-r3A" firstAttribute="leading" secondItem="J1v-Cm-EX4" secondAttribute="leading" id="90R-br-SDk"/>
+                            <constraint firstItem="Gqy-Ds-r3A" firstAttribute="top" secondItem="J1v-Cm-EX4" secondAttribute="top" id="XVt-GE-zFa"/>
+                            <constraint firstItem="J1v-Cm-EX4" firstAttribute="bottom" secondItem="Gqy-Ds-r3A" secondAttribute="bottom" id="XfD-Aq-ZEo"/>
+                            <constraint firstItem="J1v-Cm-EX4" firstAttribute="trailing" secondItem="Gqy-Ds-r3A" secondAttribute="trailing" id="msP-yB-8BC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="J1v-Cm-EX4"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="400"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O8P-RR-Cek" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-228" y="30"/>
+        </scene>
     </scenes>
 </document>

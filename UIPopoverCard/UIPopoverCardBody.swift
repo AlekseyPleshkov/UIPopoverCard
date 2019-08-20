@@ -13,7 +13,10 @@ public protocol UIPopoverCardBodyProtocol: class {
   /// Main body view
   var view: UIView { get }
 
-  /// Content view from view or xib
+  ///
+  var containerController: UIViewController? { get }
+
+  /// Content view from view controller, view or xib
   var containerView: UIView? { get }
 
   /// Init from view
@@ -28,9 +31,16 @@ public final class UIPopoverCardBody: UIPopoverCardBodyProtocol {
   // MARK: - Public Properties
 
   public let view: UIView = UIView(frame: CGRect.zero)
+  public private(set) var containerController: UIViewController?
   public private(set) var containerView: UIView?
 
   // MARK: - Init
+
+  public init(viewController: UIViewController) {
+    setupBodyView()
+    containerController = viewController
+    addContentView(view: viewController.view)
+  }
 
   public init(view: UIView) {
     setupBodyView()

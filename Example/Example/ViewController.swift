@@ -33,13 +33,22 @@ class ViewController: UIViewController {
     popoverCard = UIPopoverCard(self, configure: config, body: body)
     popoverCard?.delegate = self
 
-    DispatchQueue.global().async {
+    DispatchQueue.global().async { [unowned self] in
       sleep(4)
 
       DispatchQueue.main.async {
         let body2 = UIPopoverCardBody(xibName: "Test2")
 
         self.popoverCard?.updateBody(updatedBody: body2)
+      }
+
+      sleep(4)
+
+      DispatchQueue.main.async {
+        if let testVC = self.storyboard?.instantiateViewController(withIdentifier: "TestViewController") as? TestViewController {
+          let body3 = UIPopoverCardBody(viewController: testVC)
+          self.popoverCard?.updateBody(updatedBody: body3)
+        }
       }
     }
   }

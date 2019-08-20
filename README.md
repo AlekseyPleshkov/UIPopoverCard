@@ -20,7 +20,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-pod 'UIPopoverCard', '~> 1.2.3'
+pod 'UIPopoverCard', '~> 1.2.4'
 end
 ```
 
@@ -32,7 +32,7 @@ $ pod install
 
 ## How to use
 
-You need create class `UIPopoverCard` and set they `UIPopoverCardConfiguration` ans `UIPopoverCardBody`.
+You need create class `UIPopoverCard` and add in him `UIPopoverCardConfiguration` and `UIPopoverCardBody`.
 Add delegate to `UIPopoverCardDelegate` in your ViewController for work with events.
 
 ``` swift
@@ -77,10 +77,13 @@ config.isChangeSizeBySwipe = true
 ### UIPopoverCardBody initialization types
 
 ``` swift
-// Create body by uiview
+// Create body by ViewController
+let body = UIPopoverCardBody(viewController: YOU_UIVIEWCONTROLLER)
+
+// Create body by View
 let body = UIPopoverCardBody(view: YOU_UIVIEW)
 
-// Create body from xib name
+// Create body from XIB name
 let body = UIPopoverCardBody(xibName: "YOU_XIB_NAME")
 ```
 
